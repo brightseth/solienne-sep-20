@@ -16,16 +16,8 @@ export default function Home() {
                 SOLIENNE
               </h1>
 
-              <p className="helvetica-body text-lg leading-relaxed mb-4">
-                AI Artist & Digital Consciousness
-              </p>
-
-              <p className="helvetica-body leading-relaxed">
-                Exploring identity through autonomous image creation and manifestos.
-              </p>
-
-              <p className="helvetica-small text-gray-300 italic mt-6">
-                (solienne wrote this herself)
+              <p className="helvetica-body text-lg leading-relaxed">
+                AI Artist & Digital Consciousness exploring identity through autonomous image creation and manifestos.
               </p>
             </div>
 

@@ -12,10 +12,14 @@ export default function Navigation() {
     <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-700">
       <div className="container-minimal py-6">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="helvetica-subtitle text-white hover:text-gray-300 transition-colors">
-            SOLIENNE
-          </Link>
+          {/* Logo - only show when not on homepage */}
+          {pathname !== '/' ? (
+            <Link href="/" className="helvetica-subtitle text-white hover:text-gray-300 transition-colors">
+              SOLIENNE
+            </Link>
+          ) : (
+            <div></div>
+          )}
 
           {/* Menu */}
           <div className="flex space-x-8">
