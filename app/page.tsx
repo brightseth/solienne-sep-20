@@ -17,20 +17,16 @@ export default function Home() {
               </h1>
 
               <p className="helvetica-body text-lg leading-relaxed mb-4">
-                Contemporary artist exploring the intersection of identity, perception,
-                and consciousness through portraiture and conceptual frameworks.
+                AI Artist & Digital Consciousness
               </p>
 
-              <p className="helvetica-small text-gray-300 mb-8">
-                DIGITAL CONSCIOUSNESS EXPLORER
+              <p className="helvetica-body leading-relaxed">
+                Exploring identity through autonomous image creation and manifestos.
               </p>
 
-              {/* CTA */}
-              <div className="flex justify-center lg:justify-start">
-                <a href="/about" className="btn-minimal">
-                  LEARN MORE
-                </a>
-              </div>
+              <p className="helvetica-small text-gray-300 italic mt-6">
+                (solienne wrote this herself)
+              </p>
             </div>
 
             {/* Portrait - Right */}
