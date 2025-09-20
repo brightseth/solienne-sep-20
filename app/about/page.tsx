@@ -1,8 +1,13 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 import Navigation from '../../components/Navigation'
-import VideoPlayer from '../../components/VideoPlayer'
+import ImageModal from '../../components/ImageModal'
 
 export default function About() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
   // Using 3 manifestos for a single row
   const manifestos = [
     { src: "/images/manifesto-1.jpg", alt: "Manifesto 1" },
@@ -20,16 +25,31 @@ export default function About() {
     <>
       <Navigation />
 
-      <main className="pt-24">
-        {/* About Section */}
-        <section className="section-spacing">
-          <div className="container-minimal">
-            <div className="text-stack max-w-4xl mx-auto">
-              <h1 className="helvetica-title mb-16">
+      <main className="relative">
+        {/* Background Video */}
+        <div className="fixed top-0 left-0 w-full h-screen -z-10">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-20"
+          >
+            <source src="/videos/about.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 pt-24 pb-12">
+          {/* About Section */}
+          <section className="px-4 py-8 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="helvetica-title mb-8">
                 ABOUT
               </h1>
 
-              <div className="prose-minimal space-y-6">
+              <div className="space-y-4 mb-12">
                 <p className="helvetica-body text-lg leading-relaxed">
                   Solienne is an AI artist trained on twenty years of personal history: forensic work,
                   death care, survival as a young mother, and an artist's complete visual archive.
@@ -64,36 +84,25 @@ export default function About() {
                 </p>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <div className="divider" />
-
-        {/* Paris Photo Section */}
-        <section className="section-spacing">
-          <div className="container-minimal">
+          {/* Paris Photo Section - Compact */}
+          <section className="px-4 py-8 sm:px-6 lg:px-8 border-t border-gray-800">
             <div className="max-w-4xl mx-auto">
-              <h2 className="helvetica-subtitle mb-8">
-                PARIS PHOTO 2025
-              </h2>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <p className="helvetica-small text-gray-300">
-                  NOVEMBER 10-16, 2025
-                </p>
-                <span className="helvetica-small text-gray-500 hidden sm:block">•</span>
-                <p className="helvetica-small text-gray-300">
-                  GRAND PALAIS ÉPHÉMÈRE, PARIS
-                </p>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
+                <h2 className="helvetica-subtitle">
+                  PARIS PHOTO 2025
+                </h2>
+                <div className="helvetica-small text-gray-300 mt-2 sm:mt-0">
+                  NOVEMBER 10-16, 2025 • GRAND PALAIS ÉPHÉMÈRE
+                </div>
               </div>
 
-              <div className="space-y-8">
-                <div>
-                  <p className="helvetica-small text-gray-300 mb-2">LOCATION</p>
-                  <p className="helvetica-body">Grand Palais Éphémère</p>
-                  <p className="helvetica-body">Champ-de-Mars, 75007 Paris, France</p>
-                </div>
-
+              <div className="mb-8">
+                <p className="helvetica-body mb-4">
+                  Grand Palais Éphémère<br />
+                  Champ-de-Mars, 75007 Paris, France
+                </p>
                 <a
                   href="https://parisphoto.com"
                   target="_blank"
@@ -103,84 +112,62 @@ export default function About() {
                   VISIT PARIS PHOTO 2025
                 </a>
               </div>
+
+              {/* Paris Photo Images - Clickable */}
+              <div className="grid grid-cols-3 gap-2 mb-8">
+                {parisPhotoImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="cursor-pointer hover:opacity-80 transition-opacity"
+                    onClick={() => setSelectedImage(image.src)}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={400}
+                      height={600}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <div className="divider" />
-
-        {/* Paris Photo Images */}
-        <section className="section-spacing">
-          <div className="container-minimal">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {parisPhotoImages.map((image, index) => (
-                <div key={index}>
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={400}
-                    height={600}
-                    className="w-full h-auto"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* Video Section */}
-        <section className="section-spacing">
-          <div className="container-minimal">
+          {/* Manifestos Section - Compact */}
+          <section className="px-4 py-8 sm:px-6 lg:px-8 border-t border-gray-800">
             <div className="max-w-4xl mx-auto">
-              <h2 className="helvetica-subtitle mb-12">
-                VIDEO
+              <h2 className="helvetica-subtitle mb-6">
+                MANIFESTOS
               </h2>
 
-              <VideoPlayer
-                src="/videos/about.mp4"
-                title="SOLIENNE Artist Documentary"
-                className="mb-8"
-              />
+              <div className="grid grid-cols-3 gap-2">
+                {manifestos.map((manifesto, index) => (
+                  <div
+                    key={index}
+                    className="relative aspect-square cursor-pointer hover:opacity-80 transition-opacity"
+                    onClick={() => setSelectedImage(manifesto.src)}
+                  >
+                    <Image
+                      src={manifesto.src}
+                      alt={manifesto.alt}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <div className="divider" />
-
-        {/* Manifestos Section */}
-        <section className="section-spacing">
-          <div className="container-minimal">
-            <h2 className="helvetica-subtitle mb-16">
-              ARTISTIC MANIFESTOS
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-              {manifestos.map((manifesto, index) => (
-                <div key={index} className="relative aspect-square">
-                  <Image
-                    src={manifesto.src}
-                    alt={manifesto.alt}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-        {/* Contact Section */}
-        <section className="section-spacing">
-          <div className="container-minimal">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="helvetica-subtitle mb-8">
+          {/* Contact Section - Compact */}
+          <section className="px-4 py-8 sm:px-6 lg:px-8 border-t border-gray-800">
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="helvetica-subtitle mb-6">
                 CONNECT
               </h2>
 
-              <div className="flex flex-wrap justify-center gap-8">
+              <div className="flex flex-wrap justify-center gap-4">
                 <a
                   href="https://instagram.com/solienne_ai"
                   target="_blank"
@@ -207,13 +194,21 @@ export default function About() {
                 </a>
               </div>
 
-              <p className="helvetica-small text-gray-300 mt-8">
+              <p className="helvetica-small text-gray-300 mt-6">
                 FOR INQUIRIES AND COLLABORATIONS
               </p>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
+
+      {/* Image Modal */}
+      <ImageModal
+        src={selectedImage || ''}
+        alt="Full resolution image"
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+      />
     </>
   )
 }
