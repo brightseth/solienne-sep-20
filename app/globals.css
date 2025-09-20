@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HELVETICA Design System - SOLIENNE */
+@layer base {
+  html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-black text-white;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  /* HELVETICA Core Typography */
+  .helvetica-title {
+    @apply font-helvetica font-bold uppercase tracking-helvetica;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+  }
+
+  .helvetica-subtitle {
+    @apply font-helvetica font-bold uppercase tracking-wide;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  .helvetica-body {
+    @apply font-helvetica font-normal;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  .helvetica-small {
+    @apply font-helvetica font-normal uppercase tracking-ultra-wide;
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    line-height: 1.4;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply helvetica-small text-white hover:text-gray-300 transition-colors duration-200;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-link:hover {
+    border-bottom-color: white;
+  }
+
+  /* Buttons */
+  .btn-minimal {
+    @apply helvetica-small bg-transparent border border-white text-white px-6 py-3;
+    @apply hover:bg-white hover:text-black transition-all duration-300;
+  }
+
+  /* Layout */
+  .container-minimal {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .section-spacing {
+    @apply py-16 md:py-24;
+  }
+
+  /* Hero */
+  .hero-container {
+    @apply min-h-screen flex items-center justify-center relative;
+  }
+
+  .hero-content {
+    @apply text-center space-y-8 animate-fade-up;
+  }
+
+  /* Gallery Grid */
+  .gallery-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+
+  .gallery-item {
+    @apply border border-gray-700 p-6 hover:border-white transition-colors duration-300;
+  }
+
+  /* Typography Spacing */
+  .text-stack > * + * {
+    @apply mt-6;
+  }
+
+  .text-stack-tight > * + * {
+    @apply mt-4;
+  }
+
+  /* Minimal Divider */
+  .divider {
+    @apply border-t border-gray-700 my-16;
+  }
+
+  /* Image Treatments */
+  .image-minimal {
+    @apply w-full h-auto border border-gray-700;
+  }
+
+  .portrait-hero {
+    @apply max-w-lg mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .min-h-screen-safe {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
