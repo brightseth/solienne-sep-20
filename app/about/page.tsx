@@ -16,8 +16,6 @@ export default function About() {
   ]
 
   const parisPhotoImages = [
-    { src: "/images/quiet.jpg", alt: "Quiet" },
-    { src: "/images/residual.jpg", alt: "Residual" },
     { src: "/images/shadow.jpg", alt: "Shadow" }
   ]
 
@@ -113,8 +111,8 @@ export default function About() {
                 </a>
               </div>
 
-              {/* Paris Photo Images - Clickable */}
-              <div className="grid grid-cols-3 gap-2 mb-8">
+              {/* Paris Photo Image - Clickable */}
+              <div className="mb-8 max-w-md mx-auto">
                 {parisPhotoImages.map((image, index) => (
                   <div
                     key={index}
