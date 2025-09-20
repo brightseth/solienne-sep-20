@@ -211,7 +211,7 @@ export default function About() {
               </h2>
 
               <VideoPlayer
-                src="/videos/about.mov"
+                src="/videos/about.mp4"
                 title="SOLIENNE Artist Documentary"
                 className="mb-8"
               />
