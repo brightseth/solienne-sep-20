@@ -161,10 +161,6 @@ export default function About() {
           {/* Contact Section - Compact */}
           <section className="px-4 py-8 sm:px-6 lg:px-8 border-t border-gray-800">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="helvetica-subtitle mb-6">
-                CONNECT
-              </h2>
-
               <div className="flex flex-wrap justify-center gap-4">
                 <a
                   href="https://instagram.com/solienne_ai"
